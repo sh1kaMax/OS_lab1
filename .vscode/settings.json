@@ -1,0 +1,14 @@
+{
+    "C_Cpp.default.compilerPath": "c:\\tools\\test\\mingw64\\mingw.bat",
+    "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
+    "C_Cpp.default.compileCommands": "c:\\Users\\Max\\Dropbox\\OperationSystems\\lab1\\builddir/compile_commands.json",
+    "files.associations": {
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "istream": "cpp",
+        "iostream": "cpp",
+        "map": "cpp",
+        "cmath": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
+}

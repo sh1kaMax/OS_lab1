@@ -1,6 +1,7 @@
 #include <iostream>
 #include <windows.h>
 #include <time.h>
+#include <filesystem>
 
 #include "commands.h"
 
@@ -11,6 +12,8 @@ command_names string_to_enum(string const c) {
         return EXIT;
     } else if (c == "exe") {
         return EXE;
+    } else if (c == "cd") {
+        return CD;
     }else {
         return UNKNOWN;
     }
@@ -35,7 +38,7 @@ int exe(vector<string> args) {
     ZeroMemory(&pi, sizeof(pi));
 
     string commandLine = "";
-    for (size_t i = 1; i < args.size(); i++) {
+    for (size_t i = 0; i < args.size(); i++) {
         commandLine += args[i] + " ";
     }
     clock_t start = clock();
@@ -67,8 +70,22 @@ int exe(vector<string> args) {
     return 0;
 }
 
+int cd(vector<string> args) {
+    try {
+        if (args[1] == "..") {
+            filesystem::current_path(filesystem::current_path().remove_filename());
+        } else {
+            filesystem::current_path(filesystem::current_path().append(args[1]));
+        }
+    } catch (const filesystem::filesystem_error& e) {
+        cerr << "Error: not dir with this name " + args[1] + "!\n";
+    }
+    return 0;
+}
+
 unordered_map<command_names, command> commands = {
     { HELP, {"help", "Displays a list of commands", help}},
     { EXIT, {"exit", "Ends the program", exit}},
+    { CD, {"cd", "Change directory", cd}},
     { EXE, {"exe", "Create new process with your program and consult the time of execution", exe}}
 };

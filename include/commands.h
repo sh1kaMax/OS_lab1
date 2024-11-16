@@ -13,6 +13,7 @@ enum command_names {
     HELP,
     EXIT,
     EXE,
+    CD,
     UNKNOWN
 };
 

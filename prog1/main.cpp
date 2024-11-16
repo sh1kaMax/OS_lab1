@@ -10,7 +10,7 @@ using namespace std;
 
 int main(int argc,char* argv[]) {
     if (argc != 2) {
-        cerr << "Error: not valid usage of prog (./prog.exe count)";
+        cerr << "Error: not valid usage of prog (./prog.exe count)\n";
         return 1;
     }
 

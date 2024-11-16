@@ -39,7 +39,11 @@ int exe(vector<string> args) {
 
     string commandLine = "";
     for (size_t i = 0; i < args.size(); i++) {
-        commandLine += args[i] + " ";
+        if (i == 0 && args[i].substr(args[i].size() - 3, 3) != "exe") {
+            commandLine += "cmd.exe /C " + args[i] + " ";
+        } else {
+            commandLine += args[i] + " ";
+        }
     }
     clock_t start = clock();
 
